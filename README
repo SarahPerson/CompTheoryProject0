@@ -1,0 +1,102 @@
+CSCI 561 --- Project 0
+
+The purpose of the project is to familiarize you with functional
+programming and the Common Lisp development environment.
+
+Please take the time to setup the lisp development environment
+(explained below). IF YOU DO NOT SETUP A REASONABLE DEVELOPMENT
+ENVIRONMENT, THE OTHER COURSE PROJECTS WILL BE /EXTREMELY/ DIFFICULT.
+
+INSTRUCTIONS
+============
+
+1. Form groups of 2-4 to work on this project.
+
+2. Complete the function stubs in project-0.lisp.
+
+   Use only the following standard Lisp functions, macros, operators,
+   and constants in your definitions, along with any previously
+   completed functions in this project:
+
+    - T
+    - NIL
+    - IF
+    - WHEN
+    - COND
+    - NOT
+    - AND
+    - OR
+    - EQUAL
+    - CONS
+    - LIST
+    - CAR
+    - CDR
+    - FIRST
+    - SECOND
+    - THIRD
+    - DEFUN
+    - LABELS
+    - LET
+    - LET*
+    - FUNCALL
+    - QUOTE
+
+3. Answer the questions in project-0-report.pdf
+
+4. Submit two files via Canvas (only one submission needed per group):
+   a. Your source code (project-0.lisp)
+   b. Your report answers (project-0-report.pdf)
+
+LISP ENVIRONMENT SETUP
+======================
+
+I strongly recommend that you use SBCL (http://sbcl.org/) and
+Emacs/SLIME (https://common-lisp.net/project/slime/) on Linux.
+
+If you are not using Linux as the host operating system on your
+computer, we provide a virtual machine (VM) image that you may use.
+Instructions: https://github.com/ndantam/mines-cs-vm
+
+SBCL Setup
+----------
+SBCL (Steel Bank Common Lisp) is high performance Common Lisp system.
+
+On Debian/Ubuntu:
+
+    sudo apt-get install sbcl
+
+Other platforms: http://sbcl.org/platform-table.html
+
+Quicklisp/SLIME
+---------------
+
+Quicklisp is a lisp package manager.
+
+SLIME is the Superior Lisp Interaction Mode for Emacs.
+
+    wget https://beta.quicklisp.org/quicklisp.lisp
+    sbcl --load quicklisp.lisp \
+         --eval '(quicklisp-quickstart:install)' \
+         --eval '(ql:add-to-init-file)' \
+         --eval '(ql:quickload "quicklisp-slime-helper")' \
+         --eval '(quit)'
+
+The above call to SBCL will print several commands at the end to add
+to your ~/.emacs file.  Add these commands to your ~/.emacs file.
+
+Alternative 1: SLIMV
+--------------------
+
+Slimv is a SWANK client for Vim.  It is an option, but students in the
+past have reported that SLIME works better.
+
+https://github.com/kovisoft/slimv
+
+Alternative 2: LispWorks IDE
+----------------------------
+
+LispWorks is a commercial Lisp system.  Their "Personal Edition" is
+available gratis (no charge) for educational use.  It may work for
+you, but SLIME will probably work better.
+
+http://www.lispworks.com/

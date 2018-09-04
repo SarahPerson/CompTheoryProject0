@@ -1,0 +1,336 @@
+\ProvidesPackage{ntdmath}
+
+
+
+
+\usepackage{listings}
+
+\newcommand{\term}[1]{{\bfc{\textit{#1}}}}
+
+
+%%%%%%%%%%%%%%%%%%%
+%% LOGIC / SETS %%%
+%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\True}{\ensuremath{\top}}
+\newcommand{\False}{\ensuremath{\bot}}
+
+\newcommand{\cbrace}[1]{\ensuremath{ \left\{#1\right\} }}
+\newcommand{\pbrace}[1]{\ensuremath{ \left(#1\right) }}
+\newcommand{\mbrace}[1]{\ensuremath{ \left[#1\right] }}
+
+\newcommand{\sexpt}[2]{
+  \ensuremath{\left(\texttt{#1}\ #2\right)}
+}
+\newcommand{\semul}[1]{\sexpt{*}{#1}}
+\newcommand{\sediv}[2]{\sexpt{/}{#1\ #2}}
+
+\newcommand{\sesin}[1]{\sexpt{sin}{#1}}
+
+\newcommand{\secos}[1]{\sexpt{cos}{#1}}
+
+\newcommand{\sexp}[2]{
+\ifx&#2&%
+\ensuremath{\left(\texttt{#1}\right)}
+\else
+\ensuremath{\left(\texttt{#1}\ #2\right)}
+\fi}
+\newcommand{\sekw}[1]{\texttt{\bf{#1}}}
+
+\newcommand{\setbuilder}[2]{\cbrace{{#1}\ |\  {#2} }}
+\newcommand{\xor}{\oplus}
+\newcommand{\intset}{\mathbb{Z}}
+\newcommand{\natset}{\mathbb{N}}
+\newcommand{\boolset}{\mathbb{B}}
+\newcommand{\realset}{\mathbb{R}}
+\newcommand{\faedge}[3]{\ensuremath{{#1}\xrightarrow{#2}{#3}}}
+
+\newcommand{\langsym}{{\mathcal{L}}}
+\newcommand{\lang}[1]{{\ensuremath{\langsym\left(#1\right)}}}
+\newcommand{\langacc}[1]{{\ensuremath{\langsym_{\rm acc}\left(#1\right)}}}
+\newcommand{\langrej}[1]{{\ensuremath{\langsym_{\rm rej}\left(#1\right)}}}
+
+\newcommand{\regset}{{\ensuremath{\mathcal{R}}}}
+\newcommand{\cfset}{{\ensuremath{\mathcal{C}}}}
+\newcommand{\recset}{{\ensuremath{\mathcal{T}_{\rm D}}}}
+\newcommand{\reset}{{\ensuremath{\mathcal{T}_{\rm R}}}}
+\newcommand{\alangset}{{\ensuremath{\mathcal{L}_{\rm all}}}}
+
+%\newcommand{\powerset}[1]{\ensuremath{2^{#1}}}
+\newcommand{\powerset}[1]{\ensuremath{\mathcal{P}\left({#1}\right)}}
+\newcommand{\iseq}{\stackrel{?}{=}}
+\newcommand{\isin}{\stackrel{?}{\in}}
+
+\newcommand{\langmark}[1]{{\ensuremath{\langsym_m\left(#1\right)}}}
+\newcommand{\langgen}[1]{{\ensuremath{\langsym_g\left(#1\right)}}}
+
+\newcommand\Union[2]{\ensuremath{\bigcup\limits_{#1}{#2}}}
+\newcommand{\angry}[1]{\textcolor{angrycolor}{#1}}
+\newcommand\undercmt[2]{\angry{\underbrace{\textcolor{black}{#1}}_{\textcolor{angrycolor}{#2}}}}
+\newcommand\overcmt[2]{\angry{\overbrace{\textcolor{black}{#1}}^{\textcolor{angrycolor}{#2}}}}
+
+\newcommand\aunderline[1]{\angry{\underline{\textcolor{black}{#1}}}}
+\newcommand\aboxed[1]{\angry{\boxed{\textcolor{black}{#1}}}}
+
+\renewcommand\complement[1]{\ensuremath{\overline{#1}}}
+\newcommand\preclose[1]{\ensuremath{\widetilde{#1}}}
+
+
+\newcommand{\contspace}[1]{{\mathcal{#1}}}
+
+%\usepackage{xspace}
+%\newcommand{\TikZ}{Ti\textit{k}Z\xspace}
+\newcommand{\TikZ}{Ti\emph{k}Z}
+
+\newcommand{\dessupervise}[2]{#1/#2}
+
+\newcommand{\suplanggen}[2]{\langgen{\dessupervise{#1}{#2}}}
+\newcommand{\suplangmark}[2]{\langmark{\dessupervise{#1}{#2}}}
+
+
+\newcommand{\folid}[1]{\texttt{#1}}
+\newcommand{\folpred}[2]{\folid{#1}\left(#2\right)}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Finite Automata %%
+%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\fatranssym}[0]{\delta}
+\newcommand{\fatrans}[2]{\fatranssym\left(#1,#2\right)}
+
+\newcommand{\faetranssym}[0]{\hat{\delta}}
+\newcommand{\faetrans}[2]{\faetranssym\left(#1,#2\right)}
+
+%%%%%%%%%%%%%%
+%% Grammars %%
+%%%%%%%%%%%%%%
+
+\newcommand{\nonterm}[1]{\ensuremath{\langle\rm{#1}\rangle}}
+\newcommand{\token}[1]{\ensuremath{\left[\rm{#1}\right]}}
+
+\newcommand{\nonterma}[1]{\color{angrycolor}{\ensuremath{\langle\rm{#1}\rangle}}}
+\newcommand{\tokena}[1]{\Accent{\ensuremath{\left[\rm{#1}\right]}}}
+
+\newcommand{\nontermt}[1]{\ensuremath{\langle\textrm{#1}\rangle}}
+\newcommand{\tokent}[1]{\ensuremath{\left[\textrm{#1}\right]}}
+
+\newcommand{\nontermm}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\tokenm}[1]{\ensuremath{\left[{#1}\right]}}
+
+
+\newenvironment{grammar}{\begin{eqnarray}}{\end{eqnarray}}
+
+\newcommand{\bnfprod}[2]{\ensuremath{\nonterm{#1} &
+    \rightarrow &
+    #2 \nonumber }}
+
+\newcommand{\bnfproda}[2]{\ensuremath{\nonterma{#1} &
+    \color{angrycolor}{\rightarrow} &
+    #2 \nonumber }}
+
+\newcommand{\bnfprodm}[2]{\ensuremath{\nontermm{#1} & \rightarrow & #2
+    \nonumber }}
+
+\newcommand{\bnfprodt}[2]{\ensuremath{\nontermt{#1} & \rightarrow & #2
+    \nonumber }}
+
+\newcommand{\bnfalt}[1]{\ensuremath{ & \arrowvert & #1 \nonumber}}
+\newcommand{\bnfalta}[1]{\ensuremath{ & \Accent{\arrowvert} &
+    \Accent{#1} \nonumber}}
+
+\newcommand{\firstset}[1]{\ensuremath{\textsc{first}\left(#1\right)}}
+\newcommand{\followset}[1]{\ensuremath{\textsc{follow}\left(#1\right)}}
+\newcommand{\nderives}[0]{{\stackrel{*}{\leadsto}}}
+
+\newcommand{\Axleadsto}[1]{{\textcolor{Accentcolor}{\stackrel{#1}{\leadsto}}}}
+\newcommand{\Acancelto}[2]{{\textcolor{Accentcolor}{\cancelto{#1}{\textcolor{black}{#2}}}}}
+
+
+\newcommand{\childtoken}[1]{child{node{\token{#1}}}}
+\newcommand{\nodenonterm}[1]{node{\nonterm{#1}}}
+\newcommand{\nodetoken}[1]{node{\token{#1}}}
+\newcommand{\nodenontermt}[1]{node{\nontermt{#1}}}
+\newcommand{\nodenontermm}[1]{node{\nontermm{#1}}}
+
+\newcommand{\discstep}[2]{\ensuremath{{#1}^{[{#2}]}}}
+
+%%%%%%%%%
+%% PDA %%
+%%%%%%%%%
+
+
+% q0, sigma, g0, g1, q1
+\newcommand{\pdaedge}[5]{%
+\ensuremath{{#1}\xrightarrow{{#2},\ {#3}\rightarrow{#4}}{#5}}
+}
+
+\newcommand{\pdalbl}[3]{%
+  \ensuremath{{#1},\ {#2}\rightarrow{#3}}
+}
+
+% \newcommand{\pdaedge}[5]{%
+% \ensuremath{\delta\left(#1,#2,#3\right) = \left(#5,#4\right)}
+% }
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Turing Machines %%
+%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\blanksym}[0]{\ensuremath{\sqcup}}
+\newcommand{\tmstates}[0]{\ensuremath{Q}}
+\newcommand{\tmstate}[0]{\ensuremath{q}}
+\newcommand{\tmstart}[0]{\ensuremath{\tmstate_0}}
+\newcommand{\tmaccept}[0]{\ensuremath{\tmstate_{\rm acc}}}
+\newcommand{\tmreject}[0]{\ensuremath{\tmstate_{\rm rej}}}
+\newcommand{\tmtapealpha}[0]{\ensuremath{\Gamma}}
+\newcommand{\tminputalpha}[0]{\ensuremath{\Sigma}}
+\newcommand{\tmleft}[0]{\ensuremath{{\texttt{L}}}}
+\newcommand{\tmright}[0]{\ensuremath{{\texttt{R}}}}
+
+\newcommand{\tmerw}[3]{\ensuremath{#1\rightarrow #2,#3}}
+\newcommand{\tmerwn}[3]{\ensuremath{\cbrace{#1}\rightarrow #2,#3}}
+\newcommand{\tmero}[2]{\ensuremath{#1\rightarrow #2}}
+\newcommand{\tmeron}[2]{\ensuremath{\cbrace{#1}\rightarrow #2}}
+
+\newcommand{\tmconfstart}[0]{\ensuremath{\discstep{C}{0}}}
+\newcommand{\tmconfaccept}[0]{\ensuremath{\mathcal{C}_{\rm acc}}}
+\newcommand{\tmconfreject}[0]{\ensuremath{\mathcal{C}_{\rm rej}}}
+
+
+%%%%%%%%%%%%
+%% Lambda %%
+%%%%%%%%%%%$
+
+\newcommand{\lmdef}[2]{\lambda #1\,.\,#2}
+\newcommand{\lmdefp}[2]{\lambda #1\,.\,\left(#2\right)}
+\newcommand{\lmpdef}[2]{\left(\lambda #1\,.\,#2\right)}
+
+\newcommand{\lmlet}[3]{%
+  \ensuremath{%
+    \textbf{let } #1 = #2 \textbf{ in } #3}%
+}
+
+\newcommand{\lmassign}[2]{%
+  \ensuremath{ %
+    \textbf{def } #1 \leftarrow #2;%
+  }
+}
+
+\newcommand{\lmdefun}[3]{%
+  \ensuremath{
+    \textbf{defun } #1\left(#2\right) = #3;
+  }
+}
+
+\newcommand{\lmletrec}[4]{%
+  \ensuremath{
+    \textbf{letrec } #1\left(#2\right) = #3 \textbf{ in } #4
+  }
+}
+
+\newcommand{\lmif}[3]{%
+  \ensuremath{
+    \textbf{if } #1 \textbf{ then } #2 \textbf{ else } #3
+  }
+}
+
+\newcommand{\lmlist}[1]{%
+  \ensuremath{
+    \textbf{list}\left(#1\right)
+  }
+}
+
+\newcommand{\lmdefstruct}[2]{%
+  \ensuremath{
+    \textbf{defstruct}\,#1\left(#2\right)
+  }
+}
+
+\newcommand{\lmycomb}[0]{%
+  \ensuremath{\mathbf{Y}}
+}
+
+\newcommand{\lmfixcomb}[0]{%
+  \ensuremath{\mathbf{fix}}
+}
+
+\newcommand{\lmchurchzero}[0]{%
+  \lmdef{s\,z}{z}
+}
+
+\newcommand{\lmchurchone}[0]{%
+  \lmdef{s\,z}{s\,z}
+}
+
+\newcommand{\lmchurchtwo}[0]{%
+  \lmdef{s\,z}{s\,(s\,z)}
+}
+
+% \newcommand{\tmhead}[2][]{%
+%   \draw[faedge,#1]
+%   node[node distance=2em,font=\scriptsize] {head}
+%   edge (#2);
+% }
+
+%%%%%%%%%%
+%% PDDL %%
+%%%%%%%%%%
+
+\newcommand{\pddlvar}[1]{\texttt{#1}}
+\newcommand{\pddlfun}[2]{\ensuremath{\pddlvar{#1}\left(#2\right)}}
+\newcommand{\pddlpred}[2]{\pddlvar{#1}\left(#2\right)}
+
+\lstdefinelanguage{pddl}%
+  {keywords={
+    define,
+    and,
+    or,
+    not,
+    exists,
+    forall
+   },%
+   morekeywords={[2]
+    init,
+    goal,
+    precondition,
+    effect,
+    requirements,
+    types,
+    predicates,
+    parameters,
+    domain,
+    problem,
+    objects,
+    derived,
+    functions,
+    constants,
+  },%
+   morekeywords={[3]
+     action
+   },%
+   sensitive,% ???
+   alsodigit={-,:,=},%
+   morecomment=[l];,%
+   morecomment=[s]{\#|}{|\#},% 1997 Aslak Raanes
+   morestring=[b]"%
+  }[keywords,comments,strings]%
+
+\lstdefinestyle{pddlstyle}
+{ %numbers=left,
+  %numberstyle=\tiny,
+  numbersep=4pt,
+  keywordstyle={\bf},
+  keywordstyle={[2]\bf\color{blue!50!black}},
+  keywordstyle={[3]\bf\color{red!50!black}},
+  %identifierstyle=\color{red},
+  commentstyle=\color{green!50!black}
+}
+
+
+\newcommand{\listpddl}[1]{%
+  \lstset{style=pddlstyle}
+  \lstinputlisting[columns=fixed,language=pddl,
+  style=pddlstyle,
+  basicstyle=\scriptsize]
+  {#1}
+}

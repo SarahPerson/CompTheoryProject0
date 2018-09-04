@@ -1,0 +1,115 @@
+\documentclass[12pt,letterpaper]{ntdhw}
+
+
+\usepackage{ntdmath}
+
+\title{Project 0: Lisp Introduction and Set Operations}
+\author{CSCI 561}
+
+\rhead{Names:}
+
+%\keytrue
+
+\begin{document}
+\pagestyle{fancyplain}
+
+\maketitle
+\thispagestyle{fancyplain}
+%\clearpage
+
+\begin{enumerate}
+
+  \item Describe the Lisp development environment that you used for
+  this project.  (\emph{Hint: The correct answer is SLIME or
+    similar.})
+
+  \item What are the types of the following Lisp expressions?
+  \begin{enumerate}
+    \item {\tt 1} : \emph{
+      % Your Answer Here
+    }
+    \item {\tt (+ 1 2)} : \emph{
+      % Your Answer Here
+    }
+    \item {\tt '(+ 1 2)} : \emph{
+      % Your Answer Here
+    }
+    \item {\tt (eval '(+ 1 2))} : \emph{
+      % Your Answer Here
+    }
+    \item {\tt (lambda () (+ 1 2))} : \emph{
+      % Your Answer Here
+    }
+    \item {\tt "foo"} : \emph{
+      % Your Answer Here
+    }
+    \item {\tt 'bar} : \emph{
+      % Your Answer Here
+    }
+  \end{enumerate}
+
+  \item Tail Calls:
+  \begin{enumerate}
+    \item What is tail recursion?
+
+    \begin{emph}
+      Answer: % Your Answer Here
+    \end{emph}
+
+    \item In the recursive implementation, will {\tt fold-left} or
+    {\tt fold-right} be more memory-efficient?  Why?
+
+    \begin{emph}
+      Answer: % Your Answer Here
+    \end{emph}
+  \end{enumerate}
+
+  \item Lisp and Python represent code differently.
+
+  \begin{enumerate}
+    \item Contrast the representations of Lisp code and Python code.
+
+    \begin{emph}
+      Answer: % Your Answer Here
+    \end{emph}
+
+    \item How does Python's {\tt eval()} differ from the approach of Lisp?
+
+    \begin{emph}
+      Answer: % Your Answer Here
+    \end{emph}
+  \end{enumerate}
+
+  \item GCC supports an extension to the C language that allows
+  local/nested functions (functions contained in other functions).  A
+  GCC local function can access local variables from its parent
+  function.
+  \begin{enumerate}
+    \item What problems would arise if you return a function pointer
+    to a GCC local function? \emph{(Hint: ``Funarg problem'')}
+
+    \begin{emph}
+      Answer: % Your Answer Here
+    \end{emph}
+
+    \item How does Lisp handle this problem?
+
+    \begin{emph}
+      Answer: % Your Answer Here
+    \end{emph}
+
+  \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
