@@ -29,8 +29,6 @@
   )
 )
   
- ;; (TODO 'set-union))
-
 ;; Return the intersection of set-1 and set-2.
 ;; The result should contain no duplicates.
 ;; Assume set-1 contains no duplicates and set-2 contains no duplicates.
@@ -64,8 +62,10 @@
 ;;  (boolean-xor t nil) => t
 ;;  (boolean-xor nil nil) => nil
 (defun boolean-xor (a b)
-  (TODO 'boolean-xor))
-
+    (if ( eql a b)
+        nil
+        t)
+)
 ;; Return the implication of a and b
 ;;
 ;; Examples:
