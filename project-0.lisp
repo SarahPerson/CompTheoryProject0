@@ -72,7 +72,13 @@
 ;;  (boolean-implies t nil) => nil
 ;;  (boolean-implies nil nil) => t
 (defun boolean-implies (a b)
-  (TODO 'boolean-implies))
+    (if (eql a b )
+        t
+        (if b
+        t
+        nil)
+    )
+)
 
 ;; Return the bi-implication (if and only if) of a and b
 ;;
