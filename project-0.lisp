@@ -109,8 +109,10 @@
 ;; Examples:
 ;;   (fold-left #'- 1 '(2 3)) => -4
 (defun fold-left (function initial-value list)
-  (TODO 'fold-left))
-
+    (if list
+        (fold-left function (funcall function initial-value (car list)) (cdr list))
+        initial-value)
+)
 
 ;; Perform the right fold on the list
 ;;
