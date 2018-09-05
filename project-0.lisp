@@ -5,11 +5,13 @@
 ;; Return NIL if item is not a member of set.
 ;; The type of set is list.
 ;;
+
 ;; Examples:
 ;;  (set-member '(1 2) 1) => T
 ;;  (set-member '(1 2) 3) =>  NIL
 (defun set-member (set item)
-  (TODO 'set-member))
+  (if (member item set)
+      t))
 
 ;; Return the union of set-1 and set-2.
 ;; The result should contain no duplicates.
@@ -33,11 +35,16 @@
 ;; The result should contain no duplicates.
 ;; Assume set-1 contains no duplicates and set-2 contains no duplicates.
 ;;
+
 ;; Examples:
 ;;   (set-intersection '(1 2) '(2 4)) => '(2)
 (defun set-intersection (set-1 set-2)
-  (TODO 'set-intersection))
-
+  (if (eq set-1 '())
+      set-1
+      (if (member (car set-1) set-2)
+	  (cons (car set-1) (set-intersection (cdr set-1) set-2))
+	  (set-intersection (cdr set-1) set-2))))
+      
 ;; Return the difference of set-1 and set-2.
 ;; The result should contain no duplicates.
 ;; Assume set-1 contains no duplicates and set-2 contains no duplicates.
@@ -45,7 +52,11 @@
 ;; Examples:
 ;;   (set-diff '(1 2) '(2 4)) => '(1)
 (defun set-diff (set-1 set-2)
-  (TODO 'set-diff))
+  (if (eq set-1 '())
+      set-1
+      (if (member (car set-1) set-2)
+	  (set-diff (cdr set-1) set-2)
+	  (cons (car set-1) (set-diff (cdr set-1) set-2)))))
 
 ;; Return the exclusive or of a and b
 ;;
