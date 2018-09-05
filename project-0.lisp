@@ -18,7 +18,16 @@
 ;; Examples:
 ;;   (set-union '(1 2) '(2 4)) => '(1 2 4)
 (defun set-union (set-1 set-2)
-  (TODO 'set-union))
+  (if (not set-2 )
+    set-1 
+    (if (member(car set-2) set-1)
+        (set-union (cdr set-2) set-1)
+        (set-union (append set-1 (list (car set-2))) (cdr set-2))  
+    )
+  )
+)
+  
+ ;; (TODO 'set-union))
 
 ;; Return the intersection of set-1 and set-2.
 ;; The result should contain no duplicates.
