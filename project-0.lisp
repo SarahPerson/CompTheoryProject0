@@ -118,4 +118,8 @@
 ;;
 ;;   (fold-right #'- 1 '(2 3)) => 0
 (defun fold-right (function initial-value list)
-  (TODO 'fold-right))
+    (if  list
+        (funcall function (car list) (fold-right function initial-value (cdr list)))
+        initial-value
+    )
+)
