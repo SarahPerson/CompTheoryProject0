@@ -86,8 +86,10 @@
 ;;  (boolean-iff t nil) => nil
 ;;  (boolean-iff nil nil) => t
 (defun boolean-iff (a b)
-  (TODO 'boolean-iff))
-
+    (if ( eql a b)
+        t
+        nil)
+)
 ;; Evaluate a boolean expression.
 ;; Handle NOT, AND, OR, XOR, IMPLIES, and IFF.
 ;;
