@@ -10,8 +10,14 @@
 ;;  (set-member '(1 2) 1) => T
 ;;  (set-member '(1 2) 3) =>  NIL
 (defun set-member (set item)
-  (if (member item set)
-      t))
+  (if (not set)
+    nil
+    (if (eql item (car set))
+        t
+        (set-member (cdr set) item) 
+    )
+  )
+)
 
 ;; Return the union of set-1 and set-2.
 ;; The result should contain no duplicates.
